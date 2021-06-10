@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package logtk;
+
+message Trace {
+  required string file = 1;
+  required uint32 line = 2;
+  required uint32 col = 3;
+}
+
+message LogMessage {
+  required uint64 _time = 1;
+  required Trace _trace = 2;
+  required uint32 _level = 3;
+  optional string _message = 4;
+}
+

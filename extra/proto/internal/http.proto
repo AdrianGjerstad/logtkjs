@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+package logtk.http.internal;
+
+enum RequestMethod {
+  DEFAULT = 0;
+  OPTIONS = 1;
+  GET = 2;
+  HEAD = 3;
+  POST = 4;
+  PUT = 5;
+  DELETE = 6;
+  TRACE = 7;
+  CONNECT = 8;
+}
+
+message HttpVersion {
+  optional string protocol = 1 [default = "HTTP"];
+  required uint32 major = 2;
+  required uint32 minor = 3;
+}
+

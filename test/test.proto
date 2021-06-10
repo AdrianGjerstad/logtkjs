@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package test;
+
+import "../lib/base.proto";
+
+message Message {
+  required logtk.LogMessage base = 1;
+  required uint32 pid = 2;
+}
+

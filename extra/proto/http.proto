@@ -1,0 +1,53 @@
+syntax = "proto2";
+
+package logtk.http;
+
+import "base.proto";
+import "internal/http.proto";
+import "internal/net.proto";
+
+message HttpRequest {
+  // The base log (required in order to call this message a log format)
+  required logtk.LogMessage base = 1;
+
+  // Request Method, like GET, HEAD, POST, etc.
+  required logtk.http.internal.RequestMethod method = 2;
+
+  // Full request URL (scheme + host (+ port) + path + query)
+  // Example: "https://example.com/foo/bar/index.php?a=1&b=2&c=3"
+  required string url = 3;
+
+  // Request HTTP version (1.0, 1.1, 2.0, etc.)
+  required logtk.http.internal.HttpVersion version = 4;
+
+  // Size of the body that was sent.
+  required uint32 body_size = 5;
+
+  // Number of bytes sent overall.
+  required uint32 tx_out = 6;
+
+  // Number of bytes received overall.
+  required uint32 tx_in = 7;
+
+  // The remote host IP address (client IP)
+  required logtk.net.internal.IpAddress remote_ip = 8;
+  
+  // The IP address of the responding server (generally on the internal side)
+  required logtk.net.internal.IpAddress server_ip = 9;
+
+  // The user id of the client
+  required uint32 user_id = 10;
+
+  // Response status (200, 404, 503, etc.)
+  required uint32 status = 11;
+  
+  // The value of the User-Agent request header
+  required string user_agent = 12;
+
+  // The value of the Referrer request header
+  required string referrer = 13;
+
+  // The amount of time (in milliseconds) the server took to process and respond
+  required uint32 latency = 14;
+}
+

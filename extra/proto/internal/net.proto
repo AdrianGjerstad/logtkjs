@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package logtk.net.internal;
+
+message IpAddress {
+  oneof blob {
+    fixed32 v4 = 1;
+    bytes v6 = 2;
+  }
+}
+
